@@ -16,9 +16,30 @@
 
   <!-- iLanding CSS -->
   <link href="https://bootstrapmade.com/demo/templates/iLanding/assets/css/main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+@if($errors->any())
+@foreach ($errors->all() as $error)
+    <script>
+        Swal.fire({
+        title: "Terjadi Kesalahan!",
+        text: "{{ $error }}",
+        icon: "error"
+        });
+    </script>
+@endforeach
+@endif
+@if (session('verify'))
+<script>
+    Swal.fire({
+        title: "Email Belum Diverifikasi",
+        text: "{{ session('verify') }}",
+        icon: "warning"
+    });
+</script>
+@endif
 
 <section class="section" style="padding-top: 40px;">
   <div class="container d-flex justify-content-center">
@@ -51,7 +72,7 @@
         <div class="tab-pane fade show active" id="login-clean">
           <div class="row align-items-center g-4">
             <div class="col-lg-6">
-              <form action="/login" method="POST" onsubmit="const submitBtn 
+              <form action="{{ route('login.proses') }}" method="POST" onsubmit="const submitBtn 
               = document.getElementById('submitBtn'); submitBtn.disabled = true; 
               submitBtn.textContent = 'Memproses...';">
               @csrf
@@ -90,45 +111,50 @@
 
         <!-- REGISTER -->
         <div class="tab-pane fade" id="register-clean">
-          <div class="row align-items-center g-4">
+          <form action="{{ route('register') }}" method="POST">
+            @csrf
+            @method('POST')
+            <div class="row align-items-center g-4">
 
-            <div class="col-lg-6">
-              <h3 class="text-center mb-2" style="font-weight: 600;">Buat Akun</h3>
-              <p class="text-center text-muted" style="font-size: 0.95rem;">
-                Registrasi cepat untuk mulai menggunakan Pelaporan layanan.
-              </p>
+              <div class="col-lg-6">
+                <h3 class="text-center mb-2" style="font-weight: 600;">Buat Akun</h3>
+                <p class="text-center text-muted" style="font-size: 0.95rem;">
+                  Registrasi cepat untuk mulai menggunakan Pelaporan layanan.
+                </p>
 
-              <div class="mt-3">
-                <label class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control form-control-lg"
-                       placeholder="Masukkan nama">
+                <div class="mt-3">
+                  <label class="form-label">Nama Lengkap</label>
+                  <input type="text" name="name" class="form-control form-control-lg"
+                        placeholder="Masukkan nama" required>
+                </div>
+
+                <div class="mt-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control form-control-lg"
+                        placeholder="contoh@gmail.com" required>
+                </div>
+
+                <div class="mt-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control form-control-lg"
+                        placeholder="Minimal 8 karakter" required>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mt-4 py-2"
+                        style="font-size: 1rem; border-radius: 10px;">
+                  Registrasi
+                </button>
               </div>
 
-              <div class="mt-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control form-control-lg"
-                       placeholder="contoh@gmail.com">
+              <div class="col-lg-6 text-center">
+                <img src="https://bootstrapmade.com/demo/templates/iLanding/assets/img/features-illustration-2.webp"
+                    class="img-fluid" style="max-height: 280px;">
               </div>
 
-              <div class="mt-3">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control form-control-lg"
-                       placeholder="Minimal 8 karakter">
-              </div>
-
-              <button class="btn btn-success w-100 mt-4 py-2"
-                      style="font-size: 1rem; border-radius: 10px;">
-                Registrasi
-              </button>
             </div>
-
-            <div class="col-lg-6 text-center">
-              <img src="https://bootstrapmade.com/demo/templates/iLanding/assets/img/features-illustration-2.webp"
-                   class="img-fluid" style="max-height: 280px;">
-            </div>
-
-          </div>
+          </form>
         </div>
+
 
       </div>
 
