@@ -31,11 +31,11 @@
     </script>
 @endforeach
 @endif
-@if (session('verify'))
+@if (session('email'))
 <script>
     Swal.fire({
         title: "Email Belum Diverifikasi",
-        text: "{{ session('verify') }}",
+        text: "{{ session('email') }}",
         icon: "warning"
     });
 </script>

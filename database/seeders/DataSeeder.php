@@ -45,11 +45,11 @@ class DataSeeder extends Seeder
             'keterangan' => 'Regular User with basic access',
         ]);
 
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin123'),
-            'level_id' => 1,
-        ]);
+        // User::create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => Hash::make('admin123'),
+        //     'level_id' => 1,
+        // ]);
     }
 }

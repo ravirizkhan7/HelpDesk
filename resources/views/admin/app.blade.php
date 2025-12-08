@@ -49,7 +49,7 @@
         <h1 class="sitename">HelpDesk</h1>
       </a>
 
-      @include('layout.menu')
+      @include('user.menu')
       
       {{-- <button class="btn-getstarted" data-bs-toggle="modal" data-bs-target="#authModal">Masuk/Daftar</button> --}}
       <div class="btn btn-getstarted">
@@ -68,15 +68,15 @@
 
   <main class="main">
 
-    @include('layout.layanan')
-    @include('layout.contact')
+    @include('admin.datauser')
+    @include('user.laporan')
 
 
   </main>
 
   <footer id="footer" class="footer">
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Team Pengembang</strong></p>
     </div>
   </footer>
 

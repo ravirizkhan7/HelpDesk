@@ -74,7 +74,7 @@
         </div>
 
         {{-- moda untuk card diatas --}}
-        @include('layout.modallayanan')
+        @include('user.modallayanan')
 
       </div>
 

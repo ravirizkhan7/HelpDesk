@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function duser()
     {
         if(!Auth::user()){
             return redirect('login');
         }
-        return view('layout.app');
+        return view('user.app');
     }
 }
