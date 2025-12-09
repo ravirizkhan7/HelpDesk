@@ -50,7 +50,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level_id' => 5, // Set role default sebagai 'user'
+            'level_id' => 6, // Set role default sebagai 'user'
         ]);
 
         // Login sementara untuk kirim email verifikasi

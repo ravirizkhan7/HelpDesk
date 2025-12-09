@@ -50,4 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class, 'level_id');
+    }
+
 }

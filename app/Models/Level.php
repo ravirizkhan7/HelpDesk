@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
     protected $table = 'levels';
+    
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
 }

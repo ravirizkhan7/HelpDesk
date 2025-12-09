@@ -40,7 +40,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-Route::middleware(['level:user'])->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'duser']);
-});
+Route::middleware(['auth'])->get('/dashboard', [DashboardController::class, 'index']);
+
 

@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function duser()
+    public function index()
     {
-        if(!Auth::user()){
-            return redirect('login');
-        }
-        return view('user.app');
+        $user = Auth::user();
+        return match($user->level->name ?? null) {
+            'admin' => view('admin.app'),
+            'user'  => view('user.app'),
+            default => abort(403),
+        };
     }
+
+
 }

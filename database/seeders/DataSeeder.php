@@ -23,24 +23,30 @@ class DataSeeder extends Seeder
 
         Level::create([
             'id' => 2,
+            'name' => 'kadis',
+            'keterangan' => 'Head of Department with high-level access',
+        ]);
+
+        Level::create([
+            'id' => 3,
             'name' => 'kabid',
             'keterangan' => 'Head of Division with elevated access',
         ]);
 
         Level::create([
-            'id' => 3,
+            'id' => 4,
             'name' => 'pj',
             'keterangan' => 'Person in Charge with standard access',
         ]);
 
         Level::create([
-            'id' => 4,
+            'id' => 5,
             'name' => 'teknisi',
             'keterangan' => 'Technician with limited access',
         ]);
 
         Level::create([
-            'id' => 5,
+            'id' => 6,
             'name' => 'user',
             'keterangan' => 'Regular User with basic access',
         ]);

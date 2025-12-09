@@ -50,16 +50,116 @@
       </a>
 
       @include('user.menu')
-      
-      {{-- <button class="btn-getstarted" data-bs-toggle="modal" data-bs-target="#authModal">Masuk/Daftar</button> --}}
-      <div class="btn btn-getstarted">
-        <form action="{{ route('logout') }}" method="POST" class="d-inline" id="logoutForm">
-          @csrf
-          <button type="submit" class="btn text-white" onclick="return confirm('Yakin mau logout, {{ auth()->user()->name }}?')">
-            <i class="bi bi-box-arrow-right"></i>
-            Logout
-          </button>
-        </form>
+
+      <div class="d-flex align-items-center gap-2">
+
+      <!-- NOTIFIKASI -->
+      <div class="dropdown">
+        <button 
+          class="btn-getstarted position-relative text-white"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="border: none; padding:0 12px; height:38px; font-size:16px;">
+
+            <i class="bi bi-bell fs-5"></i>
+
+            <!-- Badge jumlah notif -->
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3
+              <span class="visually-hidden">unread messages</span>
+            </span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 p-2" style="width:300px;">
+          <li class="fw-bold px-2 mb-2 border-bottom">Notifikasi</li>
+          <li>
+            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+              <span>Laporan jaringan baru masuk</span>
+              <small class="text-muted">2m ago</small>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+              <span>Divisi baru ditambahkan</span>
+              <small class="text-muted">1h ago</small>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+              <span>Update status laporan</span>
+              <small class="text-muted">3h ago</small>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-center text-primary" href="#">Lihat semua</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AVATAR / USER DROPDOWN -->
+      <div class="dropdown">
+        <button 
+          class="btn-getstarted d-flex align-items-center gap-2 text-white"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="border: none;">
+
+            <img src="{{ asset('template/assets/img/user-1.jpg') }}"
+                class="rounded-circle"
+                style="width:30px; height:30px; object-fit:cover;"
+                alt="avatar">
+
+            <!-- Nama hanya muncul di layar md ke atas -->
+            <span class="fw-semibold d-none d-md-inline">{{ auth()->user()->name }}</span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 p-3" style="width:240px">
+
+            <!-- User Header -->
+            <li class="d-flex justify-content-between align-items-center px-2 pb-2 border-bottom">
+                <div>
+                    <div class="fw-bold">{{ auth()->user()->name }}</div>
+                    <div class="small text-muted">{{ auth()->user()->level->name  }}</div>
+                </div>
+                <i class="bi bi-person-circle text-primary fs-4"></i>
+            </li>
+
+            <!-- Profile Links -->
+            <li>
+              <a class="dropdown-item d-flex align-items-center gap-2 pt-3" href="#">
+                <i class="bi bi-person"></i> Profile
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-pencil-square"></i> Edit Profile
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-person-lines-fill"></i> View Profile
+              </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="mt-2 pt-2 border-top">
+              <form action="{{ route('logout') }}" method="POST" class="px-2">
+                  @csrf
+                  <button type="submit"
+                          class="dropdown-item d-flex align-items-center gap-2 text-danger fw-semibold"
+                          onclick="return confirm('Yakin mau logout, {{ auth()->user()->name }}?')">
+                      <i class="bi bi-box-arrow-right"></i> Logout
+                  </button>
+              </form>
+            </li>
+
+          </ul>
+      </div>
+
       </div>
 
 

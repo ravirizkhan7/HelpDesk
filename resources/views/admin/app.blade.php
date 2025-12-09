@@ -39,7 +39,7 @@
 </head>
 
 <body class="index-page">
-
+  
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -49,27 +49,91 @@
         <h1 class="sitename">HelpDesk</h1>
       </a>
 
-      @include('user.menu')
+      @include('admin.menu')
       
       {{-- <button class="btn-getstarted" data-bs-toggle="modal" data-bs-target="#authModal">Masuk/Daftar</button> --}}
-      <div class="btn btn-getstarted">
-        <form action="{{ route('logout') }}" method="POST" class="d-inline" id="logoutForm">
-          @csrf
-          <button type="submit" class="btn text-white" onclick="return confirm('Yakin mau logout, {{ auth()->user()->name }}?')">
-            <i class="bi bi-box-arrow-right"></i>
-            Logout
-          </button>
-        </form>
-      </div>
+    <div class="dropdown">
+      <button 
+        class="btn-getstarted d-flex align-items-center gap-2 text-white"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="border: none;">
 
+          <img src="{{ asset('template/assets/img/user-1.jpg') }}"
+              class="rounded-circle"
+              style="width:30px; height:30px; object-fit:cover;"
+              alt="avatar">
+
+          <span class="fw-semibold">{{ auth()->user()->name }}</span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 p-3" style="width:240px">
+
+        <!-- User Header -->
+        <li class="d-flex justify-content-between align-items-center px-2 pb-2 border-bottom">
+            <div>
+                <div class="fw-bold">{{ auth()->user()->name }}</div>
+                <div class="small text-muted">{{ auth()->user()->level->name }}</div>
+            </div>
+            <i class="bi bi-person-circle text-primary fs-4"></i>
+        </li>
+
+        <!-- Profile Links -->
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2 pt-3" href="#">
+            <i class="bi bi-person"></i> Profile
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+            <i class="bi bi-pencil-square"></i> Edit Profile
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+            <i class="bi bi-person-lines-fill"></i> View Profile
+          </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="mt-2 pt-2 border-top">
+          <form action="{{ route('logout') }}" method="POST" class="px-2">
+              @csrf
+              <button type="submit"
+                      class="dropdown-item d-flex align-items-center gap-2 text-danger fw-semibold"
+                      onclick="return confirm('Yakin mau logout, {{ auth()->user()->name }}?')">
+                  <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+          </form>
+        </li>
+
+      </ul>
+    </div>
 
     </div>
   </header>
 
   <main class="main">
+    {{-- conten data --}}
+    @include('admin.data.datauser')
+    @include('admin.data.datastruktur')
 
-    @include('admin.datauser')
-    @include('user.laporan')
+    {{-- conten layanan --}}
+    @include('admin.layanan.lynjaringan')
+    @include('admin.layanan.lyncekemail')
+    @include('admin.layanan.lynsertifikat')
+    @include('admin.layanan.lynhosting')
+    @include('admin.layanan.lynpengetahuan')
+    @include('admin.layanan.lyntamu')
+    @include('admin.layanan.lynakses')
+    @include('admin.layanan.lyncektiket')
+    @include('admin.layanan.lynsiber')
+    @include('admin.layanan.lyntamucenter')
+    @include('admin.layanan.lyndatabase')
+    @include('admin.layanan.lynverifikasipdf')
 
 
   </main>

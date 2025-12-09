@@ -77,7 +77,7 @@
                     <div class="card shadow border-0 h-100 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
                         <div class="card-body">
                             <div class="mb-3">
-                                <i class="bi bi-journal-text display-6 text-secondary"></i>
+                                <i class="bi bi-journal-text display-6 text-primary"></i>
                             </div>
                             <h5 class="card-title">Layanan Pengetahuan</h5>
                             <p class="card-text">Materi pengetahuan untuk publik.</p>
@@ -92,7 +92,7 @@
                     <div class="card shadow border-0 h-100 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
                         <div class="card-body">
                             <div class="mb-3">
-                                <i class="bi bi-person-check display-6 text-secondary"></i>
+                                <i class="bi bi-person-check display-6 text-primary"></i>
                             </div>
                             <h5 class="card-title">Buku Tamu Diskominfo</h5>
                             <p class="card-text">Laporan kunjungan tamu diskominfo.</p>
@@ -194,7 +194,12 @@
         </div>
 
         {{-- moda untuk card diatas --}}
-        @include('user.modallayanan')
+        @include('user.mdljaringan')
+        @include('user.mdlcekemail')
+        @include('user.mdlsertifikat')
+        @include('user.mdlhosting')
+        @include('user.mdlpengetahuan')
+        @include('user.mdltamu')
 
       </div>
 
